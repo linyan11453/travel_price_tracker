@@ -11,3 +11,16 @@ reports/
 
 # env
 .env
+
+# macOS
+.DS_Store
+
+# python
+__pycache__/
+*.pyc
+
+# local env
+.env
+
+# runtime caches
+data/cache/
