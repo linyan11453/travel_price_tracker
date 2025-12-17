@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "travel-price-tracker"
+version = "0.1.0"
+description = "Asia travel price tracker"
+authors = ["you you@example.com"]
+readme = "README.md"
+packages = [{ include = "travel_tracker", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<4.0"
+playwright = "^1.57.0"
+feedparser = "^6.0.12"
+python-dateutil = "^2.9.0.post0"
+pyyaml = "^6.0.3"
+fastapi = "^0.124.4"
+uvicorn = "^0.38.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.0"

@@ -1,0 +1,162 @@
+sources:
+- city: 吉隆坡
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%90%89%E9%9A%86%E5%9D%A1%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 吉隆坡
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%90%89%E9%9A%86%E5%9D%A1%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 濱城
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%BF%B1%E5%9F%8E%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 濱城
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%BF%B1%E5%9F%8E%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 新加坡
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%96%B0%E5%8A%A0%E5%9D%A1%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 新加坡
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%96%B0%E5%8A%A0%E5%9D%A1%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 峇里島
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%B3%87%E9%87%8C%E5%B3%B6%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 峇里島
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%B3%87%E9%87%8C%E5%B3%B6%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 雅加達
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E9%9B%85%E5%8A%A0%E9%81%94%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 雅加達
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E9%9B%85%E5%8A%A0%E9%81%94%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 普吉島
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%99%AE%E5%90%89%E5%B3%B6%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 普吉島
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%99%AE%E5%90%89%E5%B3%B6%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 清邁
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%B8%85%E9%82%81%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 清邁
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%B8%85%E9%82%81%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 曼谷
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%9B%BC%E8%B0%B7%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 曼谷
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%9B%BC%E8%B0%B7%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 富國島
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%AF%8C%E5%9C%8B%E5%B3%B6%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 富國島
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%AF%8C%E5%9C%8B%E5%B3%B6%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 胡志明市
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E8%83%A1%E5%BF%97%E6%98%8E%E5%B8%82%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 胡志明市
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E8%83%A1%E5%BF%97%E6%98%8E%E5%B8%82%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 長灘島
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E9%95%B7%E7%81%98%E5%B3%B6%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 長灘島
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E9%95%B7%E7%81%98%E5%B3%B6%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 宿霧
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%AE%BF%E9%9C%A7%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 宿霧
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%AE%BF%E9%9C%A7%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 巴拉望
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%B7%B4%E6%8B%89%E6%9C%9B%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 巴拉望
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%B7%B4%E6%8B%89%E6%9C%9B%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 台北
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%8F%B0%E5%8C%97%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 台北
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%8F%B0%E5%8C%97%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 高雄
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E9%AB%98%E9%9B%84%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 高雄
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E9%AB%98%E9%9B%84%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 台南
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%8F%B0%E5%8D%97%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 台南
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%8F%B0%E5%8D%97%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 北海道
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 北海道
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%8C%97%E6%B5%B7%E9%81%93%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 大阪
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E5%A4%A7%E9%98%AA%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 大阪
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E5%A4%A7%E9%98%AA%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 東京
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%9D%B1%E4%BA%AC%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 東京
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%9D%B1%E4%BA%AC%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+- city: 沖繩
+  topic: crime
+  source: Google News RSS (crime/safety)
+  rss_url: https://news.google.com/rss/search?q=%E6%B2%96%E7%B9%A9%20%28crime%20OR%20scam%20OR%20police%20OR%20safety%29&hl=en&gl=SG&ceid=SG:en
+- city: 沖繩
+  topic: weather
+  source: Google News RSS (weather/climate)
+  rss_url: https://news.google.com/rss/search?q=%E6%B2%96%E7%B9%A9%20%28weather%20OR%20flood%20OR%20storm%20OR%20haze%20OR%20typhoon%29&hl=en&gl=SG&ceid=SG:en
+

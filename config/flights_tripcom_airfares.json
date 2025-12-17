@@ -1,0 +1,30 @@
+{
+  "provider": "tripcom_airfares",
+  "notes": "Trip.com 聚合最低價頁（路線A）。後續要擴充 20 城市：新增 routes[] 即可。",
+  "routes": [
+    {
+      "id": "TRIPCOM_AIRFARES_SIN_TPE",
+      "origin": "SIN",
+      "destination": "TPE",
+      "url": "https://www.trip.com/flights/singapore-to-taipei/airfares-sin-tpe/"
+    },
+    {
+      "id": "TRIPCOM_AIRFARES_JHB_TPE",
+      "origin": "JHB",
+      "destination": "TPE",
+      "url": "https://www.trip.com/flights/johor-bahru-to-taipei/airfares-jhb-tpe/"
+    },
+    {
+      "id": "TRIPCOM_AIRFARES_SIN_BKK",
+      "origin": "SIN",
+      "destination": "BKK",
+      "url": "https://www.trip.com/flights/singapore-to-bangkok/airfares-sin-bkk/"
+    },
+    {
+      "id": "TRIPCOM_AIRFARES_JHB_BKK",
+      "origin": "JHB",
+      "destination": "BKK",
+      "url": "https://www.trip.com/flights/johor-bahru-to-bangkok/airfares-jhb-bkk/"
+    }
+  ]
+}

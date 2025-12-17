@@ -1,0 +1,24 @@
+{
+  "cities": {
+    "SIN": {
+      "name_zh": "新加坡",
+      "news_rss": [
+        "https://www.channelnewsasia.com/api/v1/rss-feed"
+      ],
+      "weather_rss": [
+        "https://www.nea.gov.sg/api/WeatherForecast"
+      ],
+      "safety_rss": []
+    },
+    "TPE": {
+      "name_zh": "台北",
+      "news_rss": [
+        "https://www.cna.com.tw/rss.aspx"
+      ],
+      "weather_rss": [
+        "https://opendata.cwb.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=CWB-12345678-FAKE-KEY&format=XML"
+      ],
+      "safety_rss": []
+    }
+  }
+}

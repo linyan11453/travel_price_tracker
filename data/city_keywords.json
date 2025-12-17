@@ -1,0 +1,26 @@
+{
+  "TPE": {
+    "news": ["台北", "臺北", "Taipei"],
+    "weather": ["臺北市", "台北市", "新北市", "基隆市", "Taipei"]
+  },
+  "BKK": {
+    "news": ["曼谷", "Bangkok", "Krung Thep"],
+    "weather": ["Bangkok", "กรุงเทพ", "曼谷"]
+  },
+  "KHH": {
+    "news": ["高雄", "Kaohsiung"],
+    "weather": ["高雄市", "Kaohsiung"]
+  },
+  "TNN": {
+    "news": ["台南", "臺南", "Tainan"],
+    "weather": ["臺南市", "台南市", "Tainan"]
+  },
+  "KUL": {
+    "news": ["Kuala Lumpur", "KL", "吉隆坡"],
+    "weather": ["Kuala Lumpur", "吉隆坡"]
+  },
+  "PEN": {
+    "news": ["Penang", "George Town", "檳城", "槟城", "濱城"],
+    "weather": ["Penang", "George Town", "檳城", "槟城", "濱城"]
+  }
+}

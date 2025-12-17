@@ -1,0 +1,425 @@
+from __future__ import annotations
+
+from datetime import datetime
+from pathlib import Path
+
+from travel_tracker.storage.db import connect_sqlite
+
+
+def _now_iso() -> str:
+    return datetime.now().isoformat(timespec="seconds")
+
+
+class Repository:
+    def __init__(self) -> None:
+        self.conn = connect_sqlite()
+        self._cols_cache: dict[str, set[str]] = {}
+
+    def close(self) -> None:
+        self.conn.close()
+
+    def init_schema(self) -> None:
+
+        # --- news schema (auto) ---
+
+        try:
+
+            self.conn.execute('''CREATE TABLE IF NOT EXISTS news_items (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  city TEXT NOT NULL,
+  topic TEXT NOT NULL,
+  source TEXT NOT NULL,
+  title TEXT NOT NULL,
+  url TEXT NOT NULL,
+  published_at TEXT,
+  fetched_at TEXT NOT NULL,
+  UNIQUE(url)
+);''')
+
+            try:
+
+                self.conn.commit()
+
+            except Exception:
+
+                pass
+
+        except Exception:
+
+            # If your DB doesn't accept AUTOINCREMENT, adjust schema accordingly.
+
+            raise
+
+        # --- end news schema (auto) ---
+
+        sql = Path("scripts/db_init.sql").read_text(encoding="utf-8")
+        self.conn.executescript(sql)
+        self.conn.commit()
+
+
+        """Return True if inserted, False if duplicate (same url). SQLite-only implementation."""
+        from datetime import datetime
+
+        fetched_at = datetime.utcnow().isoformat(timespec="seconds")
+        sql = """
+        INSERT OR IGNORE INTO news_items
+        (city, topic, source, title, url, published_at, fetched_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """
+        cur = self.conn.execute(sql, (city, topic, source, title, url, published_at, fetched_at))
+        try:
+            self.conn.commit()
+        except Exception:
+            pass
+        try:
+            return cur.rowcount == 1
+        except Exception:
+            # sqlite3 should have rowcount; fallback assume inserted if no exception
+            return True
+
+        """List news items within date window by ISO date prefix compare."""
+        where = []
+        params: list[object] = []
+
+        where.append("SUBSTR(COALESCE(published_at, fetched_at), 1, 10) >= ?")
+        where.append("SUBSTR(COALESCE(published_at, fetched_at), 1, 10) <= ?")
+        params.extend([start_date, end_date])
+
+        if city:
+            where.append("city = ?")
+            params.append(city)
+        if topic:
+            where.append("topic = ?")
+            params.append(topic)
+
+        sql = f"""
+        SELECT city, topic, source, title, url, published_at, fetched_at
+        FROM news_items
+        WHERE {' AND '.join(where)}
+        ORDER BY COALESCE(published_at, fetched_at) DESC
+        LIMIT ?
+        """
+        params.append(limit)
+
+        cur = self.conn.execute(sql, params)
+        rows = cur.fetchall()
+
+        out: list[dict] = []
+        for r in rows:
+            out.append({
+                "city": r[0],
+                "topic": r[1],
+                "source": r[2],
+                "title": r[3],
+                "url": r[4],
+                "published_at": r[5],
+                "fetched_at": r[6],
+            })
+        return out
+
+    def insert_news_item(
+        self,
+        *,
+        city: str,
+        topic: str,
+        source: str,
+        title: str,
+        url: str,
+        published_at: str | None,
+    ) -> bool:
+        """Return True if inserted; False if duplicate by URL (SQLite INSERT OR IGNORE)."""
+        from datetime import datetime
+
+        fetched_at = datetime.utcnow().isoformat(timespec="seconds")
+        sql = """
+        INSERT OR IGNORE INTO news_items
+        (city, topic, source, title, url, published_at, fetched_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        """
+        cur = self.conn.execute(sql, (city, topic, source, title, url, published_at, fetched_at))
+        try:
+            self.conn.commit()
+        except Exception:
+            pass
+        try:
+            return cur.rowcount == 1
+        except Exception:
+            return True
+
+    def list_news(
+        self,
+        *,
+        start_date: str,  # YYYY-MM-DD
+        end_date: str,    # YYYY-MM-DD
+        city: str | None = None,
+        topic: str | None = None,
+        limit: int = 50,
+    ) -> list[dict]:
+        """List news items within date window."""
+        where = []
+        params: list[object] = []
+
+        where.append("SUBSTR(COALESCE(published_at, fetched_at), 1, 10) >= ?")
+        where.append("SUBSTR(COALESCE(published_at, fetched_at), 1, 10) <= ?")
+        params.extend([start_date, end_date])
+
+        if city:
+            where.append("city = ?")
+            params.append(city)
+        if topic:
+            where.append("topic = ?")
+            params.append(topic)
+
+        sql = f"""
+        SELECT city, topic, source, title, url, published_at, fetched_at
+        FROM news_items
+        WHERE {' AND '.join(where)}
+        ORDER BY COALESCE(published_at, fetched_at) DESC
+        LIMIT ?
+        """
+        params.append(limit)
+
+        cur = self.conn.execute(sql, params)
+        rows = cur.fetchall()
+
+        out: list[dict] = []
+        for r in rows:
+            out.append({
+                "city": r[0],
+                "topic": r[1],
+                "source": r[2],
+                "title": r[3],
+                "url": r[4],
+                "published_at": r[5],
+                "fetched_at": r[6],
+            })
+        return out
+
+    def _table_cols(self, table: str) -> set[str]:
+        if table in self._cols_cache:
+            return self._cols_cache[table]
+        rows = self.conn.execute(f"PRAGMA table_info({table});").fetchall()
+        cols = {r[1] for r in rows}  # r[1] = column name
+        self._cols_cache[table] = cols
+        return cols
+
+    def has_daily_run(self, run_date: str) -> bool:
+        row = self.conn.execute(
+            "SELECT 1 FROM runs WHERE run_type='daily' AND run_date=? LIMIT 1",
+            (run_date,),
+        ).fetchone()
+        return row is not None
+
+    def delete_daily_run(self, run_date: str) -> None:
+        # When forcing a rerun, delete signals for the date to avoid duplicates
+        for t in ("signals_news", "signals_weather", "signals_safety"):
+            self.conn.execute(f"DELETE FROM {t} WHERE run_date=?", (run_date,))
+        self.conn.execute("DELETE FROM runs WHERE run_type='daily' AND run_date=?", (run_date,))
+        self.conn.commit()
+
+    def record_run(self, run_type: str, run_date: str) -> None:
+        self.conn.execute(
+            "INSERT INTO runs(run_type, run_date, created_at) VALUES(?,?,?)",
+            (run_type, run_date, _now_iso()),
+        )
+        self.conn.commit()
+
+    def insert_signal(
+        self,
+        table: str,
+        run_date: str,
+        city_code: str,
+        city_name_zh: str,
+        source_id: str,
+        title: str,
+        url: str,
+        published_at: str | None,
+        if table not in {"signals_news", "signals_weather", "signals_safety"}:
+            raise ValueError("Invalid table")
+
+        cols = self._table_cols(table)
+
+        col_names: list[str] = ["run_date", "city_code", "city_name_zh"]
+        values: list[object] = [run_date, city_code, city_name_zh]
+
+        # Backward-compat: old schema may have `source` NOT NULL
+        if "source" in cols:
+            col_names.append("source")
+            values.append(source_id)  # fill old column with source_id to satisfy NOT NULL
+
+        # Newer schema
+        if "source_id" in cols:
+            col_names.append("source_id")
+            values.append(source_id)
+
+        col_names += ["title", "url", "published_at", "created_at"]
+        values += [title, url, published_at, _now_iso()]
+
+        placeholders = ",".join(["?"] * len(values))
+        sql = f"INSERT OR IGNORE INTO {table}({','.join(col_names)}) VALUES ({placeholders})"
+        self.conn.execute(sql, tuple(values))
+    def insert_flight(
+        self,
+        run_date: str,
+        origin: str,
+        destination: str,
+        source_id: str | None,
+        title: str,
+        url: str,
+        price: float | None,
+        currency: str | None,
+        observed_at: str | None,
+        # Use INSERT OR IGNORE because we create uq_flights_dedup
+        self.conn.execute(
+            """INSERT OR IGNORE INTO signals_flights(
+                run_date, origin, destination, source_id, title, url, price, currency, observed_at, created_at
+            ) VALUES (?,?,?,?,?,?,?,?,?,?)""",
+            (run_date, origin, destination, source_id or "", title, url, price, currency, observed_at, _now_iso()),
+        )
+    def insert_flight_quote(
+        self,
+        *,
+        run_date: str,
+        provider: str,
+        origin: str,
+        destination: str,
+        route_id: str,
+        source_url: str,
+        status_code: int | None = None,
+        parse_ok: int = 0,
+        min_price_currency: str | None = None,
+        min_price_value: float | None = None,
+        notes: str | None = None,
+        created_at: str | None = None,
+        # Canonical UPSERT: allow reruns for same (run_date, provider, origin, destination, route_id)
+        if created_at is None:
+            created_at = _now_iso()
+    
+        cols = self._table_cols("flights_quotes")
+    
+        col_names = []
+        values = []
+    
+        def add(name: str, val):
+            if name in cols:
+                col_names.append(name)
+                values.append(val)
+    
+        add("run_date", run_date)
+        add("provider", provider)
+        add("origin", origin)
+        add("destination", destination)
+        add("route_id", route_id)
+        add("source_url", source_url)
+        add("status_code", status_code)
+        add("parse_ok", int(parse_ok) if parse_ok is not None else 0)
+        add("min_price_currency", min_price_currency)
+        add("min_price_value", min_price_value)
+        add("notes", notes)
+        add("created_at", created_at)
+    
+        placeholders = ",".join(["?"] * len(values))
+    
+        # Build UPDATE set list (exclude conflict keys)
+        conflict = ["run_date","provider","origin","destination","route_id"]
+        update_cols = [c for c in col_names if c not in conflict]
+        set_clause = ", ".join([f"{c}=excluded.{c}" for c in update_cols])
+    
+        sql = (
+            f"INSERT INTO flights_quotes({','.join(col_names)}) VALUES ({placeholders}) "
+            f"ON CONFLICT(run_date,provider,origin,destination,route_id) DO UPDATE SET {set_clause}"
+        )
+        self.conn.execute(sql, tuple(values))
+
+    def commit(self) -> None:
+        self.conn.commit()
+
+
+    from datetime import datetime
+    fetched_at = datetime.utcnow().isoformat(timespec="seconds")
+
+    # SQLite
+    sql1 = """
+    INSERT OR IGNORE INTO news_items
+    (city, topic, source, title, url, published_at, fetched_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?)
+    """
+    try:
+        cur = self.conn.execute(sql1, (city, topic, source, title, url, published_at, fetched_at))
+        try:
+            self.conn.commit()
+        except Exception:
+            pass
+        try:
+            return cur.rowcount == 1
+        except Exception:
+            return True
+    except Exception:
+        pass
+
+    # MySQL
+    sql2 = """
+    INSERT IGNORE INTO news_items
+    (city, topic, source, title, url, published_at, fetched_at)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    """
+    try:
+        cur = self.conn.execute(sql2, (city, topic, source, title, url, published_at, fetched_at))
+        try:
+            self.conn.commit()
+        except Exception:
+            pass
+        try:
+            return cur.rowcount == 1
+        except Exception:
+            return True
+    except Exception as e:
+        msg = str(e).lower()
+        if "unique" in msg or "duplicate" in msg or "constraint" in msg:
+            return False
+        raise
+
+    where = []
+    params = []
+
+    where.append("SUBSTR(COALESCE(published_at, fetched_at), 1, 10) >= ?")
+    where.append("SUBSTR(COALESCE(published_at, fetched_at), 1, 10) <= ?")
+    params.extend([start_date, end_date])
+
+    if city:
+        where.append("city = ?")
+        params.append(city)
+    if topic:
+        where.append("topic = ?")
+        params.append(topic)
+
+    sql = f"""
+    SELECT city, topic, source, title, url, published_at, fetched_at
+    FROM news_items
+    WHERE {' AND '.join(where)}
+    ORDER BY COALESCE(published_at, fetched_at) DESC
+    LIMIT ?
+    """
+    params.append(limit)
+
+    try:
+        cur = self.conn.execute(sql, params)
+    except Exception:
+        cur = self.conn.execute(sql.replace("?", "%s"), params)
+
+    rows = cur.fetchall()
+    out = []
+    for r in rows:
+        out.append({
+            "city": r[0],
+            "topic": r[1],
+            "source": r[2],
+            "title": r[3],
+            "url": r[4],
+            "published_at": r[5],
+            "fetched_at": r[6],
+        })
+    return out
+
+
+

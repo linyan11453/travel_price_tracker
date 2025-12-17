@@ -1,0 +1,458 @@
+{
+  "meta": {
+    "generated_at": "2025-12-15",
+    "notes": [
+      "本檔案用於集中管理資料來源（RSS/API/官網頁面），之後 providers 讀取此清單做抓取與分類。",
+      "新聞來源：只抓 title + link + published_at（不要內文），降低版權與網站負擔。",
+      "遇到 RSS/端點 403/429：請在 http_client 加 User-Agent、退避重試與快取。"
+    ]
+  },
+  "origins": [
+    {
+      "id": "SIN",
+      "name_zh": "新加坡",
+      "airport": "SIN"
+    },
+    {
+      "id": "JHB",
+      "name_zh": "新山",
+      "airport": "JHB"
+    }
+  ],
+  "destinations": [
+    {
+      "id": "KUL",
+      "name_zh": "吉隆坡",
+      "country": "MY"
+    },
+    {
+      "id": "PEN",
+      "name_zh": "濱城",
+      "country": "MY"
+    },
+    {
+      "id": "SIN",
+      "name_zh": "新加坡",
+      "country": "SG"
+    },
+    {
+      "id": "DPS",
+      "name_zh": "峇里島",
+      "country": "ID"
+    },
+    {
+      "id": "JKT",
+      "name_zh": "雅加達",
+      "country": "ID"
+    },
+    {
+      "id": "HKT",
+      "name_zh": "普吉島",
+      "country": "TH"
+    },
+    {
+      "id": "CNX",
+      "name_zh": "清邁",
+      "country": "TH"
+    },
+    {
+      "id": "BKK",
+      "name_zh": "曼谷",
+      "country": "TH"
+    },
+    {
+      "id": "PQC",
+      "name_zh": "富國島",
+      "country": "VN"
+    },
+    {
+      "id": "SGN",
+      "name_zh": "胡志明市",
+      "country": "VN"
+    },
+    {
+      "id": "MPH",
+      "name_zh": "長灘島",
+      "country": "PH"
+    },
+    {
+      "id": "CEB",
+      "name_zh": "宿霧",
+      "country": "PH"
+    },
+    {
+      "id": "PPS",
+      "name_zh": "巴拉望",
+      "country": "PH"
+    },
+    {
+      "id": "TPE",
+      "name_zh": "台北",
+      "country": "TW"
+    },
+    {
+      "id": "KHH",
+      "name_zh": "高雄",
+      "country": "TW"
+    },
+    {
+      "id": "TNN",
+      "name_zh": "台南",
+      "country": "TW"
+    },
+    {
+      "id": "CTS",
+      "name_zh": "北海道",
+      "country": "JP"
+    },
+    {
+      "id": "OSA",
+      "name_zh": "大阪",
+      "country": "JP"
+    },
+    {
+      "id": "TYO",
+      "name_zh": "東京",
+      "country": "JP"
+    },
+    {
+      "id": "OKA",
+      "name_zh": "沖繩",
+      "country": "JP"
+    }
+  ],
+  "sources": {
+    "weather_official": [
+      {
+        "id": "SG_NEA_RSS_2HR",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.weather.gov.sg/files/rss/rss2HrForecast.xml",
+        "tags": [
+          "forecast",
+          "official"
+        ]
+      },
+      {
+        "id": "SG_NEA_RSS_24HR",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.weather.gov.sg/files/rss/rss24HrForecast.xml",
+        "tags": [
+          "forecast",
+          "official"
+        ]
+      },
+      {
+        "id": "SG_NEA_RSS_4DAY",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.weather.gov.sg/files/rss/rss4day.xml",
+        "tags": [
+          "forecast",
+          "official"
+        ]
+      },
+      {
+        "id": "SG_NEA_RSS_HEAVY_RAIN",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.weather.gov.sg/files/rss/rssHeavyRain_new.xml",
+        "tags": [
+          "warning",
+          "official"
+        ]
+      },
+      {
+        "id": "SG_NEA_RSS_CAP_ALERT",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.weather.gov.sg/files/rss/rsscapalert/rsscapalert.xml",
+        "tags": [
+          "cap",
+          "warning",
+          "official"
+        ]
+      },
+      {
+        "id": "TW_CWA_RSS_WARNING",
+        "country": "TW",
+        "type": "rss",
+        "url": "https://www.cwa.gov.tw/rss/Data/cwa_warning.xml",
+        "tags": [
+          "warning",
+          "official"
+        ]
+      },
+      {
+        "id": "TW_CWA_RSS_OPML",
+        "country": "TW",
+        "type": "opml",
+        "url": "https://www.cwa.gov.tw/rss/channel.opml",
+        "tags": [
+          "forecast",
+          "official"
+        ]
+      },
+      {
+        "id": "ID_BMKG_NOWCAST_RSS_ID",
+        "country": "ID",
+        "type": "rss_or_xml",
+        "url": "https://www.bmkg.go.id/alerts/nowcast/id",
+        "tags": [
+          "cap",
+          "warning",
+          "official"
+        ],
+        "notes": "BMKG 官方文件標示此端點提供 nowcast CAP / RSS 列表；同頁提到每 IP 60 req/min。"
+      },
+      {
+        "id": "ID_BMKG_NOWCAST_RSS_EN",
+        "country": "ID",
+        "type": "rss_or_xml",
+        "url": "https://www.bmkg.go.id/alerts/nowcast/en",
+        "tags": [
+          "cap",
+          "warning",
+          "official"
+        ],
+        "notes": "同上（英文）。"
+      },
+      {
+        "type": "news",
+        "country": "SG",
+        "city": "SIN",
+        "title": "SG_CNA_RSS_SINGAPORE",
+        "url": "https://www.channelnewsasia.com/rssfeeds/8395986"
+      }
+    ],
+    "safety_official": [
+      {
+        "id": "TW_MOFA_NOTICE_TODO",
+        "country": "TW",
+        "type": "todo",
+        "url": "",
+        "tags": [
+          "travel_advisory"
+        ],
+        "notes": "之後補：目的地旅遊警示（以政府公告為主）。"
+      },
+      {
+        "id": "SG_MFA_NOTICE_TODO",
+        "country": "SG",
+        "type": "todo",
+        "url": "",
+        "tags": [
+          "travel_advisory"
+        ],
+        "notes": "之後補：目的地旅遊警示（以政府公告為主）。"
+      }
+    ],
+    "news_rss": [
+      {
+        "id": "MY_THESTAR_RSS_NEWS",
+        "country": "MY",
+        "type": "rss",
+        "url": "https://www.thestar.com.my/rss/News",
+        "tags": [
+          "news",
+          "local_media"
+        ]
+      },
+      {
+        "id": "MY_THESTAR_RSS_NATION",
+        "country": "MY",
+        "type": "rss",
+        "url": "https://www.thestar.com.my/rss/News/Nation",
+        "tags": [
+          "news",
+          "local_media"
+        ]
+      },
+      {
+        "id": "MY_THESTAR_RSS_METRO",
+        "country": "MY",
+        "type": "rss",
+        "url": "https://www.thestar.com.my/rss/Metro",
+        "tags": [
+          "news",
+          "local_media"
+        ]
+      },
+      {
+        "id": "VN_VNEXPRESS_RSS_LATEST",
+        "country": "VN",
+        "type": "rss",
+        "url": "https://vnexpress.net/rss/tin-moi-nhat.rss",
+        "tags": [
+          "news",
+          "local_media"
+        ]
+      },
+      {
+        "id": "VN_VNEXPRESS_RSS_TRAVEL",
+        "country": "VN",
+        "type": "rss",
+        "url": "https://vnexpress.net/rss/du-lich.rss",
+        "tags": [
+          "news",
+          "travel"
+        ]
+      },
+      {
+        "id": "VN_VNEXPRESS_RSS_LAW_CRIME",
+        "country": "VN",
+        "type": "rss",
+        "url": "https://vnexpress.net/rss/phap-luat.rss",
+        "tags": [
+          "news",
+          "safety"
+        ]
+      },
+      {
+        "id": "SG_CNA_LATEST",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.channelnewsasia.com/rssfeeds/1822271",
+        "tags": [
+          "SIN",
+          "news",
+          "cna"
+        ]
+      },
+      {
+        "id": "SG_CNA_SINGAPORE",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.channelnewsasia.com/rssfeeds/1821876",
+        "tags": [
+          "SIN",
+          "news",
+          "cna"
+        ]
+      },
+      {
+        "id": "SG_CNA_ASIA",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.channelnewsasia.com/rssfeeds/1821901",
+        "tags": [
+          "SIN",
+          "news",
+          "cna"
+        ]
+      },
+      {
+        "id": "SG_CNA_WORLD",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.channelnewsasia.com/rssfeeds/1821886",
+        "tags": [
+          "SIN",
+          "news",
+          "cna"
+        ]
+      },
+      {
+        "id": "SG_CNA_BUSINESS",
+        "country": "SG",
+        "type": "rss",
+        "url": "https://www.channelnewsasia.com/rssfeeds/1821906",
+        "tags": [
+          "SIN",
+          "news",
+          "cna"
+        ]
+      }
+    ],
+    "prices_baseline": [
+      {
+        "id": "BIGMAC_INDEX_TODO",
+        "type": "todo",
+        "url": "",
+        "tags": [
+          "bigmac_index"
+        ],
+        "notes": "先留介面；你決定要用哪個公開資料源（或自己建表手動更新）再補。"
+      }
+    ],
+    "poi": [
+      {
+        "id": "WIKIDATA_SPARQL_TODO",
+        "type": "todo",
+        "url": "",
+        "tags": [
+          "poi"
+        ],
+        "notes": "建議用 Wikidata SPARQL 或 OSM Overpass，做『城市中心點 + 車程 1 小時內 + 熱門景點 Top10』。先留介面。"
+      }
+    ],
+    "news": [
+      {
+        "id": "TW_GOOGLE_NEWS_TAIPEI_7D",
+        "type": "rss",
+        "country": "TW",
+        "url": "https://news.google.com/rss/search?q=%E5%8F%B0%E5%8C%97%20OR%20Taipei%20when%3A7d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+        "tags": [
+          "news",
+          "city",
+          "taipei"
+        ],
+        "notes": "城市型新聞（台北/Taipei），用於 TRAVEL_REQUIRE_CITY_MATCH=1"
+      },
+      {
+        "id": "TH_GOOGLE_NEWS_BANGKOK_7D",
+        "type": "rss",
+        "country": "TH",
+        "url": "https://news.google.com/rss/search?q=%E6%9B%BC%E8%B0%B7%20OR%20Bangkok%20when%3A7d&hl=en&gl=TH&ceid=TH:en",
+        "tags": [
+          "news",
+          "city",
+          "bangkok"
+        ],
+        "notes": "城市型新聞（曼谷/Bangkok），用於 TRAVEL_REQUIRE_CITY_MATCH=1"
+      },
+      {
+        "type": "news",
+        "country": "SG",
+        "city": "SIN",
+        "title": "SG_CNA_RSS_SINGAPORE",
+        "url": "https://www.channelnewsasia.com/rssfeeds/8395986"
+      }
+    ],
+    "safety": [
+      {
+        "id": "TW_GOOGLE_NEWS_TAIPEI_SAFETY_14D",
+        "type": "rss",
+        "country": "TW",
+        "url": "https://news.google.com/rss/search?q=%E5%8F%B0%E5%8C%97%20%E6%B2%BB%E5%AE%89%20OR%20Taipei%20crime%20when%3A14d&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+        "tags": [
+          "safety",
+          "city",
+          "taipei"
+        ],
+        "notes": "城市型治安（台北/Taipei crime）"
+      },
+      {
+        "id": "TH_GOOGLE_NEWS_BANGKOK_SAFETY_14D",
+        "type": "rss",
+        "country": "TH",
+        "url": "https://news.google.com/rss/search?q=%E6%9B%BC%E8%B0%B7%20%E6%B2%BB%E5%AE%89%20OR%20Bangkok%20crime%20when%3A14d&hl=en&gl=TH&ceid=TH:en",
+        "tags": [
+          "safety",
+          "city",
+          "bangkok"
+        ],
+        "notes": "城市型治安（曼谷/Bangkok crime）"
+      },
+      {
+        "type": "news",
+        "country": "SG",
+        "city": "SIN",
+        "title": "SG_CNA_RSS_SINGAPORE",
+        "url": "https://www.channelnewsasia.com/rssfeeds/8395986"
+      }
+    ],
+    "weather": []
+  }
+}

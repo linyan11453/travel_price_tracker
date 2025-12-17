@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "generated_by": "one_click_gen_tripcom_flights_20cities.sh",
+    "origins": [
+      {
+        "code": "SIN",
+        "name_zh": "新加坡"
+      },
+      {
+        "code": "JHB",
+        "name_zh": "新山"
+      }
+    ],
+    "limit": null
+  },
+  "routes": [
+    {
+      "id": "TRIPCOM_SIN_KUL",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "KUL",
+      "destination_name_zh": "吉隆坡",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-kul/"
+    },
+    {
+      "id": "TRIPCOM_SIN_PEN",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "PEN",
+      "destination_name_zh": "濱城",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-pen/"
+    },
+    {
+      "id": "TRIPCOM_SIN_DPS",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "DPS",
+      "destination_name_zh": "峇里島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-dps/"
+    },
+    {
+      "id": "TRIPCOM_SIN_JKT",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "JKT",
+      "destination_name_zh": "雅加達",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-jkt/"
+    },
+    {
+      "id": "TRIPCOM_SIN_HKT",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "HKT",
+      "destination_name_zh": "普吉島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-hkt/"
+    },
+    {
+      "id": "TRIPCOM_SIN_CNX",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "CNX",
+      "destination_name_zh": "清邁",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-cnx/"
+    },
+    {
+      "id": "TRIPCOM_SIN_BKK",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "BKK",
+      "destination_name_zh": "曼谷",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-bkk/"
+    },
+    {
+      "id": "TRIPCOM_SIN_PQC",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "PQC",
+      "destination_name_zh": "富國島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-pqc/"
+    },
+    {
+      "id": "TRIPCOM_SIN_SGN",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "SGN",
+      "destination_name_zh": "胡志明市",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-sgn/"
+    },
+    {
+      "id": "TRIPCOM_SIN_MPH",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "MPH",
+      "destination_name_zh": "長灘島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-mph/"
+    },
+    {
+      "id": "TRIPCOM_SIN_CEB",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "CEB",
+      "destination_name_zh": "宿霧",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-ceb/"
+    },
+    {
+      "id": "TRIPCOM_SIN_PPS",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "PPS",
+      "destination_name_zh": "巴拉望",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-pps/"
+    },
+    {
+      "id": "TRIPCOM_SIN_TPE",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "TPE",
+      "destination_name_zh": "台北",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-tpe/"
+    },
+    {
+      "id": "TRIPCOM_SIN_KHH",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "KHH",
+      "destination_name_zh": "高雄",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-khh/"
+    },
+    {
+      "id": "TRIPCOM_SIN_TNN",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "TNN",
+      "destination_name_zh": "台南",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-tnn/"
+    },
+    {
+      "id": "TRIPCOM_SIN_CTS",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "CTS",
+      "destination_name_zh": "北海道",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-cts/"
+    },
+    {
+      "id": "TRIPCOM_SIN_OSA",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "OSA",
+      "destination_name_zh": "大阪",
+      "destination_kind": "city",
+      "url": "https://www.trip.com/flights/airport-sin-city-osa/"
+    },
+    {
+      "id": "TRIPCOM_SIN_TYO",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "TYO",
+      "destination_name_zh": "東京",
+      "destination_kind": "city",
+      "url": "https://www.trip.com/flights/airport-sin-city-tyo/"
+    },
+    {
+      "id": "TRIPCOM_SIN_OKA",
+      "provider": "tripcom",
+      "origin": "SIN",
+      "destination": "OKA",
+      "destination_name_zh": "沖繩",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-sin-oka/"
+    },
+    {
+      "id": "TRIPCOM_JHB_KUL",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "KUL",
+      "destination_name_zh": "吉隆坡",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-kul/"
+    },
+    {
+      "id": "TRIPCOM_JHB_PEN",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "PEN",
+      "destination_name_zh": "濱城",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-pen/"
+    },
+    {
+      "id": "TRIPCOM_JHB_SIN",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "SIN",
+      "destination_name_zh": "新加坡",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-sin/"
+    },
+    {
+      "id": "TRIPCOM_JHB_DPS",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "DPS",
+      "destination_name_zh": "峇里島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-dps/"
+    },
+    {
+      "id": "TRIPCOM_JHB_JKT",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "JKT",
+      "destination_name_zh": "雅加達",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-jkt/"
+    },
+    {
+      "id": "TRIPCOM_JHB_HKT",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "HKT",
+      "destination_name_zh": "普吉島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-hkt/"
+    },
+    {
+      "id": "TRIPCOM_JHB_CNX",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "CNX",
+      "destination_name_zh": "清邁",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-cnx/"
+    },
+    {
+      "id": "TRIPCOM_JHB_BKK",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "BKK",
+      "destination_name_zh": "曼谷",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-bkk/"
+    },
+    {
+      "id": "TRIPCOM_JHB_PQC",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "PQC",
+      "destination_name_zh": "富國島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-pqc/"
+    },
+    {
+      "id": "TRIPCOM_JHB_SGN",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "SGN",
+      "destination_name_zh": "胡志明市",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-sgn/"
+    },
+    {
+      "id": "TRIPCOM_JHB_MPH",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "MPH",
+      "destination_name_zh": "長灘島",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-mph/"
+    },
+    {
+      "id": "TRIPCOM_JHB_CEB",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "CEB",
+      "destination_name_zh": "宿霧",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-ceb/"
+    },
+    {
+      "id": "TRIPCOM_JHB_PPS",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "PPS",
+      "destination_name_zh": "巴拉望",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-pps/"
+    },
+    {
+      "id": "TRIPCOM_JHB_TPE",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "TPE",
+      "destination_name_zh": "台北",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-tpe/"
+    },
+    {
+      "id": "TRIPCOM_JHB_KHH",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "KHH",
+      "destination_name_zh": "高雄",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-khh/"
+    },
+    {
+      "id": "TRIPCOM_JHB_TNN",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "TNN",
+      "destination_name_zh": "台南",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-tnn/"
+    },
+    {
+      "id": "TRIPCOM_JHB_CTS",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "CTS",
+      "destination_name_zh": "北海道",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-cts/"
+    },
+    {
+      "id": "TRIPCOM_JHB_OSA",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "OSA",
+      "destination_name_zh": "大阪",
+      "destination_kind": "city",
+      "url": "https://www.trip.com/flights/airport-jhb-city-osa/"
+    },
+    {
+      "id": "TRIPCOM_JHB_TYO",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "TYO",
+      "destination_name_zh": "東京",
+      "destination_kind": "city",
+      "url": "https://www.trip.com/flights/airport-jhb-city-tyo/"
+    },
+    {
+      "id": "TRIPCOM_JHB_OKA",
+      "provider": "tripcom",
+      "origin": "JHB",
+      "destination": "OKA",
+      "destination_name_zh": "沖繩",
+      "destination_kind": "airport",
+      "url": "https://www.trip.com/flights/airport-jhb-oka/"
+    }
+  ]
+}

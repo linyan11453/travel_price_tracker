@@ -1,0 +1,13 @@
+# backups / migrations
+archive/
+_migrated/
+
+# caches and data
+data/cache/
+data/raw/
+data/db/
+logs/
+reports/
+
+# env
+.env
