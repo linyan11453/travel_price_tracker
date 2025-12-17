@@ -1,0 +1,49 @@
+name: Biweekly Run
+
+on:
+  schedule:
+    # 01:40 UTC = 09:40 (MY/SG)
+    - cron: "40 1 1,15 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: biweekly-run
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: pip install -U poetry==2.2.1
+
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi
+
+      - name: Run biweekly pipeline
+        env:
+          TZ: Asia/Kuala_Lumpur
+        run: |
+          chmod +x scripts/run/run_biweekly_guarded.sh
+          ./scripts/run/run_biweekly_guarded.sh
+
+      - name: Commit reports (and DB if needed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A reports data/db/travel_tracker.sqlite || true
+          git commit -m "chore: biweekly run $(date -u +%F)" || echo "No changes"
+          git push
