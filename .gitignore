@@ -24,3 +24,7 @@ __pycache__/
 
 # runtime caches
 data/cache/
+
+# keep parent repo clean
+travel_price_tracker/
+travel_price_tracker_backup_*.tar.gz
